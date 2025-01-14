@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Rat</title>
+</head>
+<body>
+
+<h3>Oblicz miesięczną ratę</h3>
+
+<form id="ratyForm">
+    <label>
+        <input type="radio" name="kurs" value="react"> Kurs React.js
+    </label><br>
+    <label>
+        <input type="radio" name="kurs" value="javascript"> Kurs JavaScript
+    </label><br>
+
+    <label for="liczbaRat">Liczba rat:</label>
+    <input type="number" id="liczbaRat" name="liczbaRat" min="1" required><br>
+
+    <label for="miasto">Wybierz miasto:</label>
+    <select id="miasto" name="miasto">
+        <option value="warszawa">Warszawa</option>
+        <option value="katowice">Katowice</option>
+        <option value="gdansk">Gdańsk</option>
+    </select><br>
+
+    <button type="button" onclick="obliczRate()">Oblicz</button>
+</form>
+
+<p id="wynik"></p>
+
+<script>
+    function obliczRate() {
+        const liczbaRat = document.getElementById('liczbaRat').value;
+        const miasto = document.getElementById('miasto').value;
+        let kurs = document.querySelector('input[name="kurs"]:checked');
+
+        if (!kurs) {
+            document.getElementById('wynik').innerText = 'Proszę wybrać kurs.';
+            return;
+        }
+
+        kurs = kurs.value;
+
+        const wynik = `Wybrany kurs: ${kurs}, Liczba rat: ${liczbaRat}, Miasto: ${miasto}`;
+        document.getElementById('wynik').innerText = wynik;
+    }
+</script>
+
+</body>
+</html>
